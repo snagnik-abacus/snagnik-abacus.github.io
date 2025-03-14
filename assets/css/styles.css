@@ -404,6 +404,7 @@ body {
     gap: 2rem;
     margin: 3rem 0;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .tech-item {
@@ -412,6 +413,7 @@ body {
     transition: var(--transition);
     position: relative;
     opacity: 0.8;
+    margin-bottom: 1rem;
 }
 
 .tech-item:hover {
@@ -1110,6 +1112,22 @@ body {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .tech-stack {
+        gap: 1.5rem;
+    }
+
+    .tech-item {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .tech-stack {
+        gap: 1rem;
     }
 }
 
