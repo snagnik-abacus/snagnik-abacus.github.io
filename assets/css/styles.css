@@ -106,6 +106,14 @@ body {
 }
 
 /* Navigation */
+/* Desktop Navigation */
+@media (min-width: 769px) {
+    .mobile-nav,
+    .mobile-nav-toggle {
+        display: none !important;
+    }
+}
+
 .nav {
     position: fixed;
     top: 30px;

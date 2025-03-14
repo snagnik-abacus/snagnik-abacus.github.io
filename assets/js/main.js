@@ -115,12 +115,32 @@ window.addEventListener('scroll', () => {
 
 // Mobile navigation
 const navToggle = document.querySelector('.nav-toggle');
-const navLinksContainer = document.querySelector('.nav-links');
+const desktopNav = document.querySelector('.nav-links');
+const mobileNav = document.querySelector('.mobile-nav-links');
 let isNavOpen = false;
+
+// Function to update navigation visibility based on screen size
+const updateNavigationVisibility = () => {
+    const isMobile = window.innerWidth <= 768;
+    
+    // Handle desktop navigation
+    desktopNav.style.display = isMobile ? 'none' : 'flex';
+    
+    // Handle mobile elements
+    navToggle.style.display = isMobile ? 'block' : 'none';
+    if (mobileNav) {
+        mobileNav.style.display = (isMobile && isNavOpen) ? 'flex' : 'none';
+    }
+};
+
+// Initial setup
+updateNavigationVisibility();
 
 navToggle.addEventListener('click', () => {
     isNavOpen = !isNavOpen;
-    navLinksContainer.style.display = isNavOpen ? 'flex' : 'none';
+    if (mobileNav) {
+        mobileNav.style.display = isNavOpen ? 'flex' : 'none';
+    }
 
     // Animate hamburger
     const spans = navToggle.querySelectorAll('span');
@@ -136,29 +156,25 @@ navToggle.addEventListener('click', () => {
 });
 
 // Close mobile menu when clicking a nav link
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-        if (window.innerWidth <= 768) {
-            isNavOpen = false;
-            navLinksContainer.style.display = 'none';
+if (mobileNav) {
+    mobileNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                isNavOpen = false;
+                mobileNav.style.display = 'none';
 
-            // Reset hamburger icon
-            const spans = navToggle.querySelectorAll('span');
-            spans[0].style.transform = 'none';
-            spans[1].style.opacity = '1';
-            spans[2].style.transform = 'none';
-        }
+                // Reset hamburger icon
+                const spans = navToggle.querySelectorAll('span');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
     });
-});
+}
 
-// Adjust mobile menu on window resize
-window.addEventListener('resize', () => {
-    if (window.innerWidth > 768) {
-        navLinksContainer.style.display = 'flex';
-    } else if (!isNavOpen) {
-        navLinksContainer.style.display = 'none';
-    }
-});
+// Adjust navigation on window resize
+window.addEventListener('resize', updateNavigationVisibility);
 
 // Skills animation
 const skillBars = document.querySelectorAll('.skill-progress');

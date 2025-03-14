@@ -1,7 +1,7 @@
 /* Mobile Navigation Styles */
 @media (max-width: 768px) {
-  .nav {
-    display: none; /* Hide the navigation bar completely on mobile */
+  .desktop-nav {
+    display: none !important;
   }
   
   /* Add a floating action button for mobile navigation */
@@ -48,6 +48,7 @@
     padding: 8px 15px;
     border-radius: 8px;
     transition: var(--transition);
+    text-align: center;
   }
   
   .mobile-nav-link:hover,
