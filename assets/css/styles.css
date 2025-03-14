@@ -1170,6 +1170,42 @@ body {
     }
 }
 
+@media (max-width: 480px) {
+    .glitch {
+        font-size: 2.5rem;
+    }
+
+    .typing-text {
+        font-size: 1.1rem;
+    }
+
+    .cta-primary, .cta-secondary {
+        padding: 1rem 1.5rem;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .timeline-item {
+        margin-left: 20px;
+    }
+
+    .timeline-item:nth-child(odd) {
+        margin-left: 20px;
+    }
+
+    .timeline-dot {
+        left: -25px;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-dot {
+        left: -25px;
+    }
+
+    .education-card {
+        padding: 1.5rem;
+    }
+}
+
 /* Tooltip */
 [data-tooltip] {
     position: relative;

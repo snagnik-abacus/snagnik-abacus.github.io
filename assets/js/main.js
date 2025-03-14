@@ -122,6 +122,7 @@ navToggle.addEventListener('click', () => {
     isNavOpen = !isNavOpen;
     navLinksContainer.style.display = isNavOpen ? 'flex' : 'none';
 
+    // Animate hamburger
     const spans = navToggle.querySelectorAll('span');
     if (isNavOpen) {
         spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
@@ -131,6 +132,31 @@ navToggle.addEventListener('click', () => {
         spans[0].style.transform = 'none';
         spans[1].style.opacity = '1';
         spans[2].style.transform = 'none';
+    }
+});
+
+// Close mobile menu when clicking a nav link
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+            isNavOpen = false;
+            navLinksContainer.style.display = 'none';
+
+            // Reset hamburger icon
+            const spans = navToggle.querySelectorAll('span');
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+        }
+    });
+});
+
+// Adjust mobile menu on window resize
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+        navLinksContainer.style.display = 'flex';
+    } else if (!isNavOpen) {
+        navLinksContainer.style.display = 'none';
     }
 });
 
